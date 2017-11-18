@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background: rgba(0, 0, 12, 0.15);
+}
+
+.left_list {
+    position: fixed;
+    top: 150px;
+    left: 0;
+}
+
+.left_list ul li {
+    width: 128px;
+    padding: 30px 0;
+    margin-bottom: 1px;
+    opacity: 0.8;
+    list-style: none;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    color: #FFF;
+    background: #000;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.left_list ul li:hover {
+    background: #FFF;
+    color: #000;
+}
+
+.boxes div {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.2);
+}
