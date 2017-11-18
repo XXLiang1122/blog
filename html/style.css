@@ -1,0 +1,16 @@
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background: #EBEBEB;
+}
+
+.content {
+    width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 800px;
+}
