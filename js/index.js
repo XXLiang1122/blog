@@ -65,8 +65,8 @@ $(function() {
         $('.boxes div').removeClass('rotate-zero');
 
         $('.boxes div').each(function (i, e) {
-            var l = Math.floor(Math.random() * 700),
-                t = Math.floor(Math.random() * 200),
+            var l = Math.floor(Math.random() * 550),
+                t = Math.floor(Math.random() * 150),
                 r = Math.floor(Math.random() * 90);
 
             $(e).animate({

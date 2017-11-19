@@ -5,7 +5,11 @@
 
 html,
 body {
-    background: rgba(0, 0, 12, 0.15);
+    /*background: rgba(0, 0, 12, 0.15);*/
+    background-image: url(../img/bg-1.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
 }
 
 .left-list {
