@@ -46,7 +46,7 @@ $(function() {
                     if (count > 24) {
                         setTimeout(function () {
                             $('.container').show();
-
+                            $('.bg-img-group').hide(200);
                         }, 300);
 
                     }
@@ -62,6 +62,7 @@ $(function() {
     //关闭动画
     $('.container .close').click(function () {
         $('.container').hide();
+        $('.bg-img-group').show();
         $('.boxes div').removeClass('rotate-zero');
 
         $('.boxes div').each(function (i, e) {
@@ -102,3 +103,13 @@ $(function() {
     });
 
 });
+
+
+// 背景图片
+$('.bg-img').click(function () {
+        var $index = $(this).index();
+
+        var bgImg = ['bg-1.png','bg-2.png','bg-3.png','bg-4.png','bg-5.png','bg-6.png','bg-7.png','bg-8.png'];
+
+        $('body').css('background-image', 'url(img/' + bgImg[$index] + ')');
+    });
