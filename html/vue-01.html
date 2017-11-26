@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="content">
+        <h3>
+            前端笔记——Vue.js基础
+        </h3>
+        <h4>
+            Vue.js 是什么
+        </h4>
+        <p>
+            官网给出的介绍是：Vue.js是一套构建用户界面的渐进式框架。与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计。Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与单文件组件和 Vue 生态系统支持的库结合使用时，Vue 也完全能够为复杂的单页应用程序提供驱动。
+        </p>
+        <p>
+            嗯，大概就是这样~
+        </p>
+        老规矩，先来个正确的打开姿势<br><br>
+        <pre>
+       <!--这是我们的View-->
+    &lt;div id="app"&gt;
+        {{ message }}
+    &lt;/div&gt;
+
+    &lt;script src="vue.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+
+    // 创建一个 Vue 实例
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World!'
+        }
+    })
+    &lt;/script&gt;
+        </pre>
+    <p>得到</p>
+    <img src="img/img003.jpg" alt="">
+    <p>
+        仔细看了上例其实也很容易明白，下面具体讲一下一些基本语法
+    </p>
+    <h4>数据绑定</h4>
+    <ol>
+        <li>
+            使用"{{...}}"进行数据绑定，被绑定的属性发生变化时视图层也会实时更新（使用v-once指令只插入一次，之后不会再更新）
+        </li>
+        <li>
+            <p>双向绑定：使用v-model指令</p>
+            <pre>
+    &lt;div id="app"&gt;
+        &lt;p>{{ message }}&lt;/p&gt;
+    &lt;input type="text" v-model="message"&gt;
+    &lt;/div&gt;
+            </pre>
+            <p>
+                <div id="app">
+                    <p>{{ message }}</p>
+                    <input type="text" v-model="message">
+                </div>
+            </p>
+            将message绑定到文本框，当更改文本框的值时，{{ message }} 中的内容也会被更新。
+        </li>
+    </ol>
+    <h4>一些常用指令</h4>
+    <ol>
+        <li>
+            <span class="cl-red">v-if </span>
+            <p>
+                <pre>
+    &lt;div v-if="expression"&gt; 当expression表达式为true时则显示这段话 &lt;/div&gt;
+                </pre>
+            </p>
+        </li>
+        <li>
+            <span class="cl-red">v-show </span>
+            <p>
+                <pre>
+    &lt;div v-show="expression"&gt; 当expression表达式为true时则显示这段话 &lt;/div&gt;
+    与v-if不同，v-show只是将元素隐藏（display=none），而v-if是根据表达式的值
+    来执行元素的插入或者删除行为。
+                </pre>
+            </p>
+        </li>
+        <li>
+            <span class="cl-red">v-else-if 和 v-else </span>
+            <p>很容易理解，不多说</p>
+        </li>
+        <li>
+            <span class="cl-red">v-for </span>
+            <p>
+                <pre>
+    &lt;ol id="app"&gt;
+        &lt;li v-for="item in items"&gt; {{item}} &lt;/li&gt;
+    &lt;/ol&gt;
+
+    new Vue({
+            el: '#app',
+            data: {
+                items: [ 'list1', 'list2', 'list3' ]
+            }
+        })
+                </pre>
+            </p>
+            <img src="img/img005.jpg" alt="">
+        </li>
+        <li>
+            <span class="cl-red">v-bind </span>
+            <p>
+                "{{...}}"不能绑定在元素的属性上，所以要用v-bind
+            </p>
+            <p>
+              <pre>
+    &lt;div v-bind:style="myColor">我会变蓝&lt;/div>
+
+    data: {
+        myColor: {
+            color: 'blue'
+        }
+    }
+
+    缩写 &lt;div :style="myColor">我会变蓝&lt;/div>
+            </pre>
+            </p>
+            <img src="img/img006.jpg" alt="">
+        </li>
+        <li>
+            <span class="cl-red">v-on </span>
+            <p>
+               <pre>
+    &lt;button v-on:click="greet">Greet&lt;/button>
+
+    data: {
+        message: 'Hello, Vue.js!'
+    },
+    methods: {
+        greet: function() {
+            alert(this.message)
+    }
+
+    缩写 &lt;button @click="greet">Greet&lt;/button>
+            </pre>
+            </p>
+            <img src="img/img007.jpg" alt="">
+            <img src="img/img008.jpg" alt="">
+        </li>
+    </ol>
+    <h4>修饰符</h4>
+    用在指令后，如 .trim（去除首尾空格）
+    <p>
+        <pre>
+    &lt;input v-model.trim="msg">
+        </pre>
+    </p>
+    事件修饰符
+    <p>
+        <pre>
+    //阻止单击事件继续传播
+    &lt;a v-on:click.stop="doThis">&lt;/a>
+
+    //提交事件不再重载页面
+    &lt;form v-on:submit.prevent="onSubmit">&lt;/form>
+
+    //修饰符可以串联
+    &lt;a v-on:click.stop.prevent="doThat">&lt;/a>
+
+    //只有修饰符
+    &lt;form v-on:submit.prevent>&lt;/form>
+
+    //添加事件监听器时使用事件捕获模式
+    //即内部元素触发的事件先在此处处理，然后才交由内部元素自身进行处理
+    &lt;div v-on:click.capture="doThis">...&lt;/div>
+
+    //只当在 event.target 是当前元素自身时触发处理函数
+    //即事件不是从内部元素触发的
+    &lt;div v-on:click.self="doThat">...&lt;/div>
+
+    //点击事件将只会触发一次
+    &lt;a v-on:click.once="doThis">&lt;/a>
+        </pre>
+    </p>
+    按键修饰符
+    <p>
+        <pre>
+    .enter
+    .tab
+    .delete (捕获“删除”和“退格”键)
+    .esc
+    .space
+    .up
+    .down
+    .left
+    .right
+    可以通过全局 config.keyCodes 对象自定义按键修饰符别名：
+    // 可以使用 `v-on:keyup.f1`
+    Vue.config.keyCodes.f1 = 112
+        </pre>
+    </p>
+    还有一些其他的，不洗细举了
+    <h4>对象语法和数组语法</h4>
+    <p>
+        <pre>
+    &lt;div v-bind:class="{ active: isActive }">&lt;/div>
+
+    data: {
+        isActive: true
+    }
+        </pre>
+    </p>
+    如果iActive为true，则class获得active值
+    <p>
+        <pre>
+    &lt;div v-bind:class="[activeClass, errorClass]">&lt;/div>
+
+    data: {
+        activeClass: 'active',
+        errorClass: 'text-danger'
+    }
+        </pre>
+    </p>
+    class="active text-danger"
+    <h4>最后说一下vue实例里的结构</h4>
+    <p>
+    <pre>
+    new Vue({
+        el: '#id',
+        data: {
+            message: 'Hello'，
+            firstName: 'Foo',
+            lastName: 'Bar',
+            fullName: 'Foo Bar'
+        },
+        computed: {
+            // 计算属性的 getter
+            reversedMessage: function () {
+            // `this` 指向 vm 实例
+            return this.message.split('').reverse().join('')
+            }
+        },
+        methods: {
+            reversedMessage: function () {
+                return this.message.split('').reverse().join('')
+            }
+        },
+        watch: {
+            firstName: function (val) {
+                this.fullName = val + ' ' + this.lastName
+        },
+        components: {
+            'my-component': {
+                template: '&lt;div>A custom component!&lt;/div>'
+            }
+        }
+    })
+    </pre>
+    </p>
+        <ol>
+            <li>
+                el: "#id", //id对应某个使用该实例的元素id
+            </li>
+            <li>
+                data: {...}, //存放该实例里的共用属性，可以是属性值或函数
+            </li>
+            <li>
+                 computed: {...}, //计算属性缓存
+            </li>
+            <li>
+                methods: {...}, //方法
+            </li>
+            <li>
+                watch: {...}, //侦听属性，用来观察和响应 Vue 实例上的数据变动
+            </li>
+            <li>
+                components: {...}, //组件（局部注册），我们将会在下一节来讲解
+            </li>
+        </ol>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello, Vue.js!'
+            }
+        })
+    </script>
+</body>
+</html>
