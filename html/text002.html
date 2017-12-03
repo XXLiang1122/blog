@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="content">
+        <h3>var、let和const的区别</h3>
+        <p>还记得刚开始学js时，用的是es5的语法，让人印象最深的是与c或c++等高级语言不同，js是弱类型语言，所有的变量都只用var来声明，而不用指定变量类型如int,
+        string等，并且js没有块级作用域，也就是说在for或if语句中声明的变量起作用域是全局的</p>
+        <pre>
+    for (var i = 0; i < 10; i++) {
+        var a = 123;
+    }
+
+    console.log(a);
+        </pre>
+        <p>上面会输出变量a的值，也能读取到i的值（i = 10）.</p>
+        <p>正因js有这样的优点，所以对于我们在开发时也是相当便利的（不需要显示声明任何类型），但是方便的同时也有很多弊端。</p>
+        <h4>let</h4>
+        <p>之后在导师的建议下，去大概了解了下es6，发现了es6新增的let语句，官方描述是：let允许你声明一个作用域被限制在块级中的变量、语句或者表达式。与var关键字不同的是，它声明的变量只能是全局或者整个函数块的。</p>
+        <p>let声明的变量只在其声明的块或子块中可用，这一点，与var相似。二者之间最主要的区别在于var声明的变量的作用域是整个封闭函数，而let是块级作用域。</p>
+        <pre>
+    function varTest() {
+        var x = 1;
+        if (true) {
+            var x = 2;  // 同样的变量!
+            console.log(x);  // 2
+        }
+        console.log(x);  // 2
+    }
+
+    function letTest() {
+        let x = 1;
+        if (true) {
+            let x = 2;  // 不同的变量
+            console.log(x);  // 2
+        }
+        console.log(x);  // 1
+    }
+        </pre>
+        <p>在相同的函数或块作用域内重新声明同一个变量会引发SyntaxError.</p>
+        <pre>
+    if (true) {
+        let a = 1;
+        let a = 2;  // TypeError thrown
+    }
+        </pre>
+        <p class="cl-red">let不存在变量提升</p>
+        <pre>
+    console.log(a) // undefined
+    var a;
+        </pre>
+        <p>使用var，输出再声明，不报错</p>
+        <pre>
+    console.log(a) // Uncaught ReferenceError: a is not defined
+    let a;
+        </pre>
+        <p>使用let就报错了</p>
+        <h4>const</h4>
+        <p>ES6引入的第三个声明类关键词：const</p>
+
+        <p class="cl-red">const定义的变量不可以修改，而且必须初始化。</p>
+        <pre>
+    const a = 1;//正确
+    const b;    //错误，必须初始化
+    a = 2; //语法错误（SyntaxError）
+        </pre>
+        <p>const的作用域与let命令相同：只在声明所在的块级作用域内有效。</p>
+        <p>const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用。</p>
+        <p>const声明的常量，也与let一样不可重复声明。</p>
+    </div>
+</body>
+</html>
