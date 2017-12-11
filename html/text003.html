@@ -33,6 +33,27 @@
         .c {
             height: 1em;
         }
+        .x {
+            width: 320px;
+            white-space: nowrap;
+            background: #C5C2E0;
+        }
+        .y {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .z {
+            width: 380px;
+            height: 150px;
+            line-height: 28px;
+        }
+        .v {
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 6;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -108,7 +129,30 @@
         </div>
 
         <h4>文本多余文字用省略号代替</h4>
-        晚了，下次抽空补上...
+        <p>这也是一种经常会遇到的情况，首先是单行文本：</p>
+        <p class='x demo'>这是一段很长很长很长很长很长很长的单行文本</p>
+        <pre>
+    p{
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+        </pre>
+        <p class='x y demo'>这是一段很长很长很长很长很长很长的单行文本</p>
+        <p>text-overflow: ellipsis;兼容性很好</p>
+        <p>多行文本时</p>
+        <p class='z demo'>这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本
+        这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本</p><br><br>
+        <pre>
+    p{
+        text-overflow: ellipsis;
+        display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/
+        -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+        -webkit-line-clamp: 6; /** 显示的行数 **/
+        overflow: hidden;
+    }
+        </pre>
+        <p class='z v demo'>这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本这是一段很长很长很长很长很长很长的多行文本</p>
+        <p>这种方式的兼容性并不友好，只对内核为-webkit-的浏览器兼容，还有一种简单的方法，用js来控制字数，在这里就不说了</p>
     </div>
 </body>
 </html>
