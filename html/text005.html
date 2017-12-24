@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #audio {
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        #audio li{
+            display: inline-block;
+            float: left;
+            width: 40px;
+            height: 80px;
+            padding: 10px;
+            background: #1D1D1D;
+            color: #FFF;
+            line-height: 80px;
+            font-size: 1.5em;
+            text-align: center;
+            border-right: 2px solid #FFF;
+        }
+
+        #audio li:hover {
+            background: #FFF;
+            color: #000;
+            box-shadow: 3px 3px 20px #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h3>Web Audio API 的简单运用</h3>
+        <p>如果不想用&lt;audio>标签的话，可以试下Web Audio API这个API，</p>
+        一个简单经典的web  Audio的工作流程如下：
+        <ol>
+            <li>构建音频上下文AudioContext对象；</li>
+            <li>在AudioContext对象内，构建音源，比如&lt;audio>，oscillator，stream</li>
+            <li>构建效果节点effectNode，比如混响，双二阶滤波器，声相，压限器</li>
+            <li>选择最终的音频目的地，比如说你的系统扬声器</li>
+            <li> 连接源到效果，效果到输出终端</li>
+        </ol>
+        <p>首先，你需要构建一个AudioContext实例</p>
+        <img src="img/img343209.jpg" alt=""><br><br>
+        <p>然后是音频频率</p>
+        <img src="img/img5005044.jpg" alt=""><br><br>
+        <p>哦对了，在这之前要先判断浏览器是否支持这个API</p>
+        <img src="img/img5005448.jpg" alt=""><br><br>
+        <p>然后嘛，音调不能少吧</p>
+        <img src="img/img005639.jpg" alt=""><br><br>
+        <p>这是控制音频音量的</p>
+        <img src="img/img005852.jpg" alt=""><br><br>
+        <p>连接输入输出</p>
+        <img src="img/img010204.jpg" alt=""><br><br>
+        <p>现在audio节点图已经建立，我们可以设置属性值及调用音频节点的方法来调节想要的音效，然后就可以播放了</p>
+        <img src="img/img1225010709.jpg" alt=""><br><br>
+        <p>不过底部的实例不是单纯的oscillator.start()，而是以下的处理方式：</p>
+        <img src="img/img5012120.jpg" alt="">
+
+        <div id="audio">
+            <ul>
+                <li>哆</li>
+                <li>瑞</li>
+                <li>咪</li>
+                <li>发</li>
+                <li>梭</li>
+                <li>拉</li>
+                <li>西</li>
+            </ul>
+        </div>
+    </div>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+    (function () {
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!window.AudioContext) {
+            alert('当前浏览器不支持Web Audio API');
+            return;
+        }
+
+        var $li = $('#audio ul li');
+        // 创建新的音频上下文接口
+        var audioCtx = new AudioContext();
+        // 发出的声音频率数据，表现为音调的高低
+        var arrFrequency = [262, 294, 330, 349, 392, 440, 494];
+
+        $li.on('mouseenter', function () {
+            var frequency = arrFrequency[$(this).index()];
+
+            // 创建一个OscillatorNode, 它表示一个周期性波形（振荡），基本上来说创造了一个音调
+            var oscillator = audioCtx.createOscillator();
+
+            // 创建一个GainNode,它可以控制音频的总音量
+            var gainNode = audioCtx.createGain();
+
+            // 把音量，音调和终节点进行关联
+            oscillator.connect(gainNode);
+            // audioCtx.destination返回AudioDestinationNode对象，表示当前audio context中所有节点的最终节点，一般表示音频渲染设备
+            gainNode.connect(audioCtx.destination);
+            // 指定音调的类型，其他还有square|triangle|sawtooth
+            oscillator.type = 'sine';
+            // 设置当前播放声音的频率，也就是最终播放声音的调调
+            oscillator.frequency.value = frequency;
+            // 当前时间设置音量为0
+            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            // 0.01秒后音量为1
+            gainNode.gain.linearRampToValueAtTime(1, audioCtx.currentTime + 0.01);
+            // 音调从当前时间开始播放
+            oscillator.start(audioCtx.currentTime);
+            // 1秒内声音慢慢降低，是个不错的停止声音的方法
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+            // 1秒后完全停止声音
+            oscillator.stop(audioCtx.currentTime + 1);
+        });
+})();
+    </script>
+</body>
+</html>
