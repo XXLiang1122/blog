@@ -1,3 +1,3 @@
-# myBlog
+# BLOG
 
-click https://xxliang1122.github.io/myBlog/ to view
+click https://xxliang1122.github.io/blog/ to view
