@@ -153,27 +153,91 @@
 
     function body(){
         cxt.beginPath();
-        cxt.fillStyle = '#F5E8E8';
+        cxt.fillStyle = '#318FD8';
         cxt.lineWidth = 4;
         cxt.moveTo(298, 488);
         cxt.bezierCurveTo(305, 550, 200, 483, 185, 560);
-        cxt.quadraticCurveTo(181, 598, 198, 606); //198, 606->468, 608
-        cxt.lineTo(468, 608);
-        cxt.bezierCurveTo(430, 450, 350, 555, 350, 484);
+        cxt.quadraticCurveTo(181, 598, 198, 616); //198, 606->468, 608
+        cxt.lineTo(468, 616);
+        cxt.bezierCurveTo(444, 447, 350, 555, 350, 484);
         cxt.fill();
         cxt.stroke();
-        cxt.beginPath();
-        cxt.lineWidth = 6;
-        cxt.strokeStyle = "#EBEBEB";
-        cxt.moveTo(190, 606);
-        cxt.lineTo(470, 608);
-        cxt.stroke();
+        // cxt.beginPath();
+        // cxt.lineWidth = 6;
+        // cxt.strokeStyle = "#EBEBEB";
+        // cxt.moveTo(190, 606);
+        // cxt.lineTo(470, 608);
+        // cxt.stroke();
     }
     body();
 
-    function hand() {
-
+    function neck() {
+    	cxt.beginPath();
+    	cxt.fillStyle = '#F5E8E8';
+    	cxt.moveTo(300, 488);
+    	cxt.lineTo(297, 515);
+    	cxt.lineTo(352, 515);
+    	cxt.lineTo(348, 484);
+    	cxt.fill();
     }
+    neck();
+
+    function tie() {
+    	cxt.beginPath();
+    	cxt.fillStyle = '#EF3939';
+    	cxt.moveTo(319, 500);
+    	cxt.quadraticCurveTo(263, 473, 272, 517);
+    	cxt.quadraticCurveTo(281, 567, 321, 520);
+    	cxt.quadraticCurveTo(331, 522, 340, 518);
+    	cxt.bezierCurveTo(382, 556, 387, 525, 383, 515);
+    	cxt.bezierCurveTo(368, 506, 407, 458, 339, 496);
+    	cxt.quadraticCurveTo(325, 495, 319, 500);
+    	cxt.quadraticCurveTo(317, 512, 321, 520);
+    	cxt.quadraticCurveTo(331, 522, 340, 518);
+    	cxt.quadraticCurveTo(343, 506, 339, 496);
+    	cxt.fill();
+    	cxt.stroke();
+    	cxt.lineWidth = 2;
+    	cxt.moveTo(319, 509);
+    	cxt.lineTo(297, 505);
+    	cxt.moveTo(341, 506);
+    	cxt.lineTo(361, 500);
+    	cxt.stroke();
+    }
+    tie();
+
+    function hand() {
+    	cxt.beginPath();
+    	cxt.fillStyle = '#F5E8E8';
+    	cxt.strokeStyle = "#191717";
+        cxt.lineWidth = 4;
+        cxt.moveTo(250, 545);
+        cxt.bezierCurveTo(236, 518, 252, 498, 260, 498);
+        cxt.bezierCurveTo(274, 498, 287, 514, 279, 541);
+        cxt.quadraticCurveTo(282, 563, 286, 560);
+        cxt.quadraticCurveTo(319, 557, 319, 579);
+        cxt.quadraticCurveTo(316, 589, 291, 587);
+        cxt.quadraticCurveTo(285, 600, 276, 602);
+        cxt.lineTo(285, 615);
+        cxt.lineTo(210, 615);
+        cxt.bezierCurveTo(193, 615, 185, 570, 194, 562);
+        cxt.quadraticCurveTo(210, 555, 207, 559);
+        cxt.bezierCurveTo(202, 536, 228, 537, 223, 541);
+        cxt.quadraticCurveTo(228, 522, 244, 528);
+        cxt.fill();
+        cxt.moveTo(282, 572);
+        cxt.quadraticCurveTo(278, 580, 282, 590);
+        cxt.moveTo(255, 563);
+        cxt.lineTo(264, 589);
+        cxt.lineTo(284, 613);
+        cxt.moveTo(232, 571);
+        cxt.lineTo(242, 599);
+        cxt.lineTo(258, 614);
+        cxt.moveTo(210, 580);
+        cxt.quadraticCurveTo(221, 617, 239, 614);
+        cxt.stroke();
+    }
+    hand();
 </script>
 </body>
 </html>
