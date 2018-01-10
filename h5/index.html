@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<script>
+		if (window.innerWidth >= 1024) {
+			location.href = '../index.html';
+		}
+	</script>
+	<script>
+        (function () {
+            // html初始fontSize = 320 / 7.2 = 44.44
+            // 根据屏幕宽度修改font-size基准
+            function calcFontSize() {
+                var html = document.documentElement,
+                    windowWidth = html.clientWidth,
+                    width = 720,
+                    unit = width / 100;
+
+                if (windowWidth > width) {
+                    windowWidth = width;
+                }
+                html.style.fontSize = windowWidth / parseFloat(unit.toFixed(2)) + 'px';
+            }
+
+            calcFontSize();
+            window.onresize = calcFontSize;
+            document.addEventListener('DOMContentLoaded', calcFontSize, false);
+        })();
+    </script>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<title>x</title>
+</head>
+<body>
+<div class="container">
+	<div class="content-top">
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide"><img class="swiper-lazy banner" data-src="img/banner.png" alt=""><div class="swiper-lazy-preloader"></div></div>
+		        <div class="swiper-slide"><img class="swiper-lazy banner" data-src="img/banner.png" alt=""><div class="swiper-lazy-preloader"></div></div>
+		        <div class="swiper-slide"><img class="swiper-lazy banner" data-src="img/banner.png" alt=""><div class="swiper-lazy-preloader"></div></div>
+		    </div>
+		    <div class="swiper-pagination"></div>
+		</div>
+
+		<nav class="tap">
+	        <ul>
+	            <li class="active"><span>博&nbsp;客</span></li>
+	            <li><span>心&nbsp;情</span></li>
+	            <li><span>分&nbsp;享</span></li>
+	            <li><span>关于我</span></li>
+	        </ul>
+	    </nav>
+	</div>
+	<div class="placeholder"></div>
+
+    <div class="content-body">
+    	<div>
+    		1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>1111111111111111111111<br>
+    	</div>
+    	<div>
+    		2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>2222222222222222222222<br>
+    	</div>
+    	<div>
+    		3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>3333333333333333333333<br>
+    	</div>
+    	<div>
+    		4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>4444444444444444444444<br>
+    	</div>
+    </div>
+</div>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+//图片轮播
+var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal',
+    loop: true,
+    preloadImages: false,
+    lazy: true,
+
+    autoplay: {
+    	delay: 2000,
+    },
+
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+</script>
+</body>
+</html>

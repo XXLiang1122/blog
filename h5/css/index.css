@@ -1,0 +1,100 @@
+html, body {
+	font-size: .28rem;
+	background: #F5F5F5;
+	height: 100%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	width: 7.2rem;
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+
+.placeholder {
+	position: fixed;
+	top: 0;
+	width: 7.2rem;
+	height: 3.2rem;
+	background: #fff;
+	z-index: 100;
+}
+
+.content-top {
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+
+.swiper-container, .swiper-container .banner {
+	width: 7.2rem;
+	height: 3.2rem;
+}
+
+.swiper-pagination-bullet-active {
+	background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.tap {
+	width: 7.2rem;
+	height: .8rem;
+}
+
+.tap ul {
+	display: flex;
+	border-bottom: 1px solid #DADADA;
+	/*box-shadow: 1px 1px 20px #E1E1E1;*/
+}
+
+.tap ul li {
+	position: relative;
+	display: inline-block;
+	width: 25%;
+	text-align: center;
+	background: #fff;
+}
+
+.tap ul li span {
+	display: inline-block;
+    width: 99%;
+    height: .4rem;
+    margin: .2rem 0;
+    border-right: 1px solid #C1C1C1;
+}
+
+.tap ul li:last-child span {
+	border-right: none;
+}
+
+.tap ul li.active:before {
+	content: '';
+	position: absolute;
+	display: inline-block;
+	width: 60%;
+	height: 2px;
+	bottom: 0;
+	left: 20%;
+	background: #FF8181;
+}
+
+.active {
+	color: #FF8181;
+}
+
+.content-body {
+	position: relative;
+	top: 4.2rem;
+	width: 400%;
+	z-index: 99;
+}
+
+.content-body > div {
+	float: left;
+	width: 23.5%;
+	padding: 0 .2rem .5rem;
+	background: #fff;
+}
