@@ -1,6 +1,6 @@
 html, body {
 	font-size: .28rem;
-	background: #F5F5F5;
+	background: #fff;
 	height: 100%;
 }
 
@@ -39,18 +39,29 @@ html, body {
 	background: rgba(255, 255, 255, 0.8) !important;
 }
 
-.tap {
+.tab {
 	width: 7.2rem;
 	height: .8rem;
 }
 
-.tap ul {
+.tab ul {
 	display: flex;
 	border-bottom: 1px solid #DADADA;
 	/*box-shadow: 1px 1px 20px #E1E1E1;*/
 }
 
-.tap ul li {
+.tab ul i {
+	position: absolute;
+	display: inline-block;
+	width: 14%;
+	height: 2px;
+	bottom: 0;
+	left: 5.3%;
+	background: #FF8181;
+	transition: left .3s;
+}
+
+.tab ul li {
 	position: relative;
 	display: inline-block;
 	width: 25%;
@@ -58,7 +69,7 @@ html, body {
 	background: #fff;
 }
 
-.tap ul li span {
+.tab ul li span {
 	display: inline-block;
     width: 99%;
     height: .4rem;
@@ -66,35 +77,59 @@ html, body {
     border-right: 1px solid #C1C1C1;
 }
 
-.tap ul li:last-child span {
+.tab ul li:last-of-type span {
 	border-right: none;
-}
-
-.tap ul li.active:before {
-	content: '';
-	position: absolute;
-	display: inline-block;
-	width: 60%;
-	height: 2px;
-	bottom: 0;
-	left: 20%;
-	background: #FF8181;
 }
 
 .active {
 	color: #FF8181;
 }
 
+._placeholder {
+	width: 7.2rem;
+	height: 4.2rem;
+	background: #F5F5F5;
+}
+
 .content-body {
 	position: relative;
-	top: 4.2rem;
+	left: 0;
 	width: 400%;
 	z-index: 99;
+	transition: left .3s;
 }
 
 .content-body > div {
 	float: left;
 	width: 23.5%;
 	padding: 0 .2rem .5rem;
-	background: #fff;
+}
+
+.blog ul li {
+	display: block;
+	padding-bottom: .2rem;
+	border-bottom: 1px solid #D4D4D4;
+}
+
+.blog ul li:last-child {
+	border-bottom: none;
+}
+
+.blog ul li:before {
+	content: '';
+	display: inline-block;
+	width: .3rem;
+	height: .3rem;
+	margin-bottom: -.32rem;
+	background: url(../img/pen.ico) no-repeat center center / cover;
+}
+
+.blog ul li a {
+	display: block;
+    padding-left: .32rem;
+    margin-top: -.1rem;
+	text-decoration: none;
+	font-size: .26rem;
+	color: #000;
+	line-height: .45rem;
 }
