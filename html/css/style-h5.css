@@ -1,13 +1,25 @@
-pre {
-    padding: 0;
-    margin: 0;
-}
 body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     font-size: .24rem;
-    background: #EBEBEB;
+    line-height: .35rem;
+    background: #fff;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: .9rem;
+    background: #FF8181;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+header img {
+    width: 1.4rem;
+    height: .55rem;
+    margin: .15rem 0 0 .2rem;
 }
 
 ::selection {
@@ -16,23 +28,19 @@ body {
 }
 
 .content {
-    width: 7.2rem;
-    padding: .2rem;
-    margin: 0 auto;
+    width: 6.6rem;
+    margin: 1.2rem auto 0;
 }
 
 img {
-    max-width: 7.2rem;
+    max-width: 6.6rem;
 }
 
 pre {
     overflow: auto;
     padding: .2rem 0 .1rem 0;
-    font-weight: bold;
-    color: #402800;
-    background: #CCCDF6;
-    border-radius: 1em;
-    box-shadow: 1px 1px 20px #0A1C46;
+    font-size: .22rem;
+    box-shadow: 0.01rem 0.01rem 0.2rem #ff8181;
 }
 
 a {

@@ -3,22 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link id="css" rel="stylesheet" href="css/style.css">
+    <script>
+        (function () {
+            // html初始fontSize = 320 / 7.2 = 44.44
+            // 根据屏幕宽度修改font-size基准
+            function calcFontSize() {
+                var html = document.documentElement,
+                    windowWidth = html.clientWidth,
+                    width = 720,
+                    unit = width / 100;
+
+                if (windowWidth > width) {
+                    windowWidth = width;
+                }
+                html.style.fontSize = windowWidth / parseFloat(unit.toFixed(2)) + 'px';
+            }
+
+            calcFontSize();
+            window.onresize = calcFontSize;
+            document.addEventListener('DOMContentLoaded', calcFontSize, false);
+        })();
+    </script>
     <style>
         #audio {
-            width: 500px;
+            width: 320px;
             margin: 50px auto;
         }
 
         #audio li{
             display: inline-block;
             float: left;
-            width: 40px;
-            height: 80px;
-            padding: 10px;
+            height: 60px;
+            padding: 10px 5px;
             background: #1D1D1D;
             color: #FFF;
-            line-height: 80px;
+            line-height: 60px;
             font-size: 1.5em;
             text-align: center;
             border-right: 2px solid #FFF;
@@ -32,6 +52,7 @@
     </style>
 </head>
 <body>
+    <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
     <div class="content">
         <h3>Web Audio API 的简单运用</h3>
         <p>如果不想用&lt;audio>标签的话，可以试下Web Audio API这个API，</p>
@@ -72,6 +93,18 @@
             </ul>
         </div>
     </div>
+<script>
+    if (window.screen.width < 1024) {
+        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
+        var newMeta = document.createElement('meta');
+        newMeta.name = 'viewport';
+        newMeta.content = 'width=device-width,user-scalable=no';
+        document.getElementsByTagName('head')[0].prepend(newMeta);
+    }
+    else {
+        document.getElementsByTagName('header')[0].style.display = 'none';
+    }
+</script>
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script>
     (function () {
@@ -116,6 +149,6 @@
             oscillator.stop(audioCtx.currentTime + 1);
         });
 })();
-    </script>
+</script>
 </body>
 </html>

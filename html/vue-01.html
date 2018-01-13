@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link id="css" rel="stylesheet" href="css/style.css">
+    <script>
+        (function () {
+            // html初始fontSize = 320 / 7.2 = 44.44
+            // 根据屏幕宽度修改font-size基准
+            function calcFontSize() {
+                var html = document.documentElement,
+                    windowWidth = html.clientWidth,
+                    width = 720,
+                    unit = width / 100;
+
+                if (windowWidth > width) {
+                    windowWidth = width;
+                }
+                html.style.fontSize = windowWidth / parseFloat(unit.toFixed(2)) + 'px';
+            }
+
+            calcFontSize();
+            window.onresize = calcFontSize;
+            document.addEventListener('DOMContentLoaded', calcFontSize, false);
+        })();
+    </script>
 </head>
 <body>
+    <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
     <div class="content">
         <h3>
             前端笔记——Vue.js基础
@@ -44,11 +66,11 @@
         仔细看了上例其实也很容易明白，下面具体讲一下一些基本语法
     </p>
     <h4>数据绑定</h4>
-    <ol>
-        <li>
+
+        <p>
             使用"{{...}}"进行数据绑定，被绑定的属性发生变化时视图层也会实时更新（使用v-once指令只插入一次，之后不会再更新）
-        </li>
-        <li>
+        </p>
+        <p>
             <p>双向绑定：使用v-model指令</p>
             <pre>
     &lt;div id="app"&gt;
@@ -63,19 +85,19 @@
                 </div>
             </p>
             将message绑定到文本框，当更改文本框的值时，{{ message }} 中的内容也会被更新。
-        </li>
-    </ol>
+        </p>
+
     <h4>一些常用指令</h4>
-    <ol>
-        <li>
+
+        <p>
             <span class="cl-red">v-if </span>
             <p>
                 <pre>
     &lt;div v-if="expression"&gt; 当expression表达式为true时则显示这段话 &lt;/div&gt;
                 </pre>
             </p>
-        </li>
-        <li>
+        </p>
+        <p>
             <span class="cl-red">v-show </span>
             <p>
                 <pre>
@@ -84,12 +106,12 @@
     来执行元素的插入或者删除行为。
                 </pre>
             </p>
-        </li>
-        <li>
+        </p>
+        <p>
             <span class="cl-red">v-else-if 和 v-else </span>
             <p>很容易理解，不多说</p>
-        </li>
-        <li>
+        </p>
+        <p>
             <span class="cl-red">v-for </span>
             <p>
                 <pre>
@@ -106,8 +128,8 @@
                 </pre>
             </p>
             <img src="img/img005.jpg" alt="">
-        </li>
-        <li>
+        </p>
+        <p>
             <span class="cl-red">v-bind </span>
             <p>
                 "{{...}}"不能绑定在元素的属性上，所以要用v-bind
@@ -126,8 +148,8 @@
             </pre>
             </p>
             <img src="img/img006.jpg" alt="">
-        </li>
-        <li>
+        </p>
+        <p>
             <span class="cl-red">v-on </span>
             <p>
                <pre>
@@ -146,8 +168,8 @@
             </p>
             <img src="img/img007.jpg" alt="">
             <img src="img/img008.jpg" alt="">
-        </li>
-    </ol>
+        </p>
+
     <h4>修饰符</h4>
     用在指令后，如 .trim（去除首尾空格）
     <p>
@@ -257,36 +279,48 @@
     })
     </pre>
     </p>
-        <ol>
-            <li>
-                el: "#id", //id对应某个使用该实例的元素id
-            </li>
-            <li>
-                data: {...}, //存放该实例里的共用属性，可以是属性值或函数
-            </li>
-            <li>
-                 computed: {...}, //计算属性缓存
-            </li>
-            <li>
-                methods: {...}, //方法
-            </li>
-            <li>
-                watch: {...}, //侦听属性，用来观察和响应 Vue 实例上的数据变动
-            </li>
-            <li>
-                components: {...}, //组件（局部注册），我们将会在下一节来讲解
-            </li>
-        </ol>
+
+            <p>
+                1.el: "#id", //id对应某个使用该实例的元素id
+            </p>
+            <p>
+                2.data: {...}, //存放该实例里的共用属性，可以是属性值或函数
+            </p>
+            <p>
+                3.computed: {...}, //计算属性缓存
+            </p>
+            <p>
+                4.methods: {...}, //方法
+            </p>
+            <p>
+                5.watch: {...}, //侦听属性，用来观察和响应 Vue 实例上的数据变动
+            </p>
+            <p>
+                6.components: {...}, //组件（局部注册），我们将会在下一节来讲解
+            </p>
+
         <footer>参考：<br><a href="https://cn.vuejs.org/v2/guide/">https://cn.vuejs.org/v2/guide/</a><br><a href="http://www.cnblogs.com/keepfool/p/5619070.html">http://www.cnblogs.com/keepfool/p/5619070.html</a></footer>
     </div>
-    <script src="js/vue.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello, Vue.js!'
-            }
-        })
-    </script>
+<script>
+    if (window.screen.width < 1024) {
+        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
+        var newMeta = document.createElement('meta');
+        newMeta.name = 'viewport';
+        newMeta.content = 'width=device-width,user-scalable=no';
+        document.getElementsByTagName('head')[0].prepend(newMeta);
+    }
+    else {
+        document.getElementsByTagName('header')[0].style.display = 'none';
+    }
+</script>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello, Vue.js!'
+        }
+    })
+</script>
 </body>
 </html>

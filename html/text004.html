@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link id="css" rel="stylesheet" href="css/style.css">
+    <script>
+        (function () {
+            // html初始fontSize = 320 / 7.2 = 44.44
+            // 根据屏幕宽度修改font-size基准
+            function calcFontSize() {
+                var html = document.documentElement,
+                    windowWidth = html.clientWidth,
+                    width = 720,
+                    unit = width / 100;
+
+                if (windowWidth > width) {
+                    windowWidth = width;
+                }
+                html.style.fontSize = windowWidth / parseFloat(unit.toFixed(2)) + 'px';
+            }
+
+            calcFontSize();
+            window.onresize = calcFontSize;
+            document.addEventListener('DOMContentLoaded', calcFontSize, false);
+        })();
+    </script>
 </head>
 <body>
+    <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
     <div class="content">
         <h3>对Promise对象的简单理解</h3>
         <p>ES6提供了原生的promise对象，所谓的promise，其实是一种提供异步编程方法的对象，正如其名promise：承诺，该对象返回三种状态，并且无法被外界改变，这三个状态分别是fulfilled（已成功）、rejected（已失败）和pending（进行中），只有异步操作才能决定是哪一种状态，而且状态最终只会从pending变成fuifilled或rejected。</p>
@@ -40,5 +62,17 @@
         <img src="img/img282525325.jpg" alt="">
         <p>只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的 Promise 实例的返回值，就传递给p的回调函数。也就是说，其中一条收到请求就执行</p>
     </div>
+<script>
+    if (window.screen.width < 1024) {
+        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
+        var newMeta = document.createElement('meta');
+        newMeta.name = 'viewport';
+        newMeta.content = 'width=device-width,user-scalable=no';
+        document.getElementsByTagName('head')[0].prepend(newMeta);
+    }
+    else {
+        document.getElementsByTagName('header')[0].style.display = 'none';
+    }
+</script>
 </body>
 </html>
