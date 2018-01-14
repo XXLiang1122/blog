@@ -33,8 +33,8 @@
             border-radius: 8px;
             cursor: pointer;
         }
-        body {
-            overflow-x: auto !important;
+        .canvas {
+            overflow: auto;
         }
     </style>
     <link id="css" rel="stylesheet" href="css/style.css">
@@ -52,7 +52,7 @@
     <div class="content">
         <h3>HTML5之canvas的运用</h3>
         <p>canvas画布，虽然平时基本用不到，不过居然是html5带来的新API，那就先熟悉一下，下面是练习的完成图↓↓↓</p>
-        <canvas id="kenan" height="620px" width="800px">233</canvas>
+        <div class="canvas"><canvas id="kenan" height="620px" width="800px">233</canvas></div>
         <span class="btn" onclick="show()">点我预览</span>
         <p>主要用到的是这几个绘图函数：</p>
         <img src="img/img07232500.jpg" alt="">
