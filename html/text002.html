@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
     <title>Document</title>
-    <link id="css" rel="stylesheet" href="css/style.css">
     <script>
         (function () {
             // html初始fontSize = 320 / 7.2 = 44.44
@@ -25,9 +25,18 @@
             document.addEventListener('DOMContentLoaded', calcFontSize, false);
         })();
     </script>
+    <link id="css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
+<header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
+<script>
+    if (window.screen.width < 1024) {
+        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
+    }
+    else {
+        document.getElementsByTagName('header')[0].style.display = 'none';
+    }
+</script>
     <div class="content">
         <h3>var、let和const的区别</h3>
         <p>还记得刚开始学js时，用的是es5的语法，让人印象最深的是与c或c++等高级语言不同，js是弱类型语言，所有的变量都只用var来声明，而不用指定变量类型如int,
@@ -94,17 +103,5 @@
         <p>const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用。</p>
         <p>const声明的常量，也与let一样不可重复声明。</p>
     </div>
-<script>
-    if (window.screen.width < 1024) {
-        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
-        var newMeta = document.createElement('meta');
-        newMeta.name = 'viewport';
-        newMeta.content = 'width=device-width,user-scalable=no';
-        document.getElementsByTagName('head')[0].prepend(newMeta);
-    }
-    else {
-        document.getElementsByTagName('header')[0].style.display = 'none';
-    }
-</script>
 </body>
 </html>

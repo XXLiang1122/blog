@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
     <title>Document</title>
-    <link id="css" rel="stylesheet" href="css/style.css">
     <script>
         (function () {
             // html初始fontSize = 320 / 7.2 = 44.44
@@ -25,9 +25,18 @@
             document.addEventListener('DOMContentLoaded', calcFontSize, false);
         })();
     </script>
+    <link id="css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
+<header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
+<script>
+    if (window.screen.width < 1024) {
+        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
+    }
+    else {
+        document.getElementsByTagName('header')[0].style.display = 'none';
+    }
+</script>
     <div class="content">
         <h3>两个常用的css小技巧</h3>
         <p>在构建一些页面时经常会碰到一些问题，其中有两个是比较频繁遇到，因此先马克防止以后再次遇到而忘记怎么做。</p>
@@ -108,17 +117,5 @@
         <img src="img/img14014021.jpg" alt="">
         <p>这种方式的兼容性并不友好，只对内核为-webkit-的浏览器兼容，还有一种简单的方法，用js来控制字数，在这里就不说了</p>
     </div>
-<script>
-    if (window.screen.width < 1024) {
-        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
-        var newMeta = document.createElement('meta');
-        newMeta.name = 'viewport';
-        newMeta.content = 'width=device-width,user-scalable=no';
-        document.getElementsByTagName('head')[0].prepend(newMeta);
-    }
-    else {
-        document.getElementsByTagName('header')[0].style.display = 'none';
-    }
-</script>
 </body>
 </html>

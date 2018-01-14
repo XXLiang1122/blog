@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
     <title>Document</title>
-    <link id="css" rel="stylesheet" href="css/style.css">
     <script>
         (function () {
             // html初始fontSize = 320 / 7.2 = 44.44
@@ -34,12 +34,21 @@
             cursor: pointer;
         }
         body {
-            overflow-x: auto;
+            overflow-x: auto !important;
         }
     </style>
+    <link id="css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
+<header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
+<script>
+    if (window.screen.width < 1024) {
+        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
+    }
+    else {
+        document.getElementsByTagName('header')[0].style.display = 'none';
+    }
+</script>
     <div class="content">
         <h3>HTML5之canvas的运用</h3>
         <p>canvas画布，虽然平时基本用不到，不过居然是html5带来的新API，那就先熟悉一下，下面是练习的完成图↓↓↓</p>
@@ -76,18 +85,6 @@
             </li>
         </ul>
     </div>
-<script>
-    if (window.screen.width < 1024) {
-        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
-        var newMeta = document.createElement('meta');
-        newMeta.name = 'viewport';
-        newMeta.content = 'width=device-width,user-scalable=no';
-        document.getElementsByTagName('head')[0].prepend(newMeta);
-    }
-    else {
-        document.getElementsByTagName('header')[0].style.display = 'none';
-    }
-</script>
 <script>
     var cxt = document.getElementById('kenan').getContext('2d');
     var once = true;

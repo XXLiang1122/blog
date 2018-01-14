@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
     <title>Document</title>
-    <link id="css" rel="stylesheet" href="css/style.css">
     <script>
         (function () {
             // html初始fontSize = 320 / 7.2 = 44.44
@@ -25,21 +25,18 @@
             document.addEventListener('DOMContentLoaded', calcFontSize, false);
         })();
     </script>
+    <link id="css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
-
+<header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
 <script>
     if (window.screen.width < 1024) {
         document.getElementById('css').setAttribute("href", 'css/style-h5.css');
-        var newMeta = document.createElement('meta');
-        newMeta.name = 'viewport';
-        newMeta.content = 'width=device-width,user-scalable=no';
-        document.getElementsByTagName('head')[0].prepend(newMeta);
     }
     else {
         document.getElementsByTagName('header')[0].style.display = 'none';
     }
 </script>
+
 </body>
 </html>

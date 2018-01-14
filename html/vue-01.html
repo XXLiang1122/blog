@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
     <title>Document</title>
-    <link id="css" rel="stylesheet" href="css/style.css">
     <script>
         (function () {
             // html初始fontSize = 320 / 7.2 = 44.44
@@ -25,9 +25,18 @@
             document.addEventListener('DOMContentLoaded', calcFontSize, false);
         })();
     </script>
+    <link id="css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
+<header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
+<script>
+    if (window.screen.width < 1024) {
+        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
+    }
+    else {
+        document.getElementsByTagName('header')[0].style.display = 'none';
+    }
+</script>
     <div class="content">
         <h3>
             前端笔记——Vue.js基础
@@ -280,39 +289,27 @@
     </pre>
     </p>
 
-            <p>
-                1.el: "#id", //id对应某个使用该实例的元素id
-            </p>
-            <p>
-                2.data: {...}, //存放该实例里的共用属性，可以是属性值或函数
-            </p>
-            <p>
-                3.computed: {...}, //计算属性缓存
-            </p>
-            <p>
-                4.methods: {...}, //方法
-            </p>
-            <p>
-                5.watch: {...}, //侦听属性，用来观察和响应 Vue 实例上的数据变动
-            </p>
-            <p>
-                6.components: {...}, //组件（局部注册），我们将会在下一节来讲解
-            </p>
+        <p>
+            1.el: "#id", //id对应某个使用该实例的元素id
+        </p>
+        <p>
+            2.data: {...}, //存放该实例里的共用属性，可以是属性值或函数
+        </p>
+        <p>
+            3.computed: {...}, //计算属性缓存
+        </p>
+        <p>
+            4.methods: {...}, //方法
+        </p>
+        <p>
+            5.watch: {...}, //侦听属性，用来观察和响应 Vue 实例上的数据变动
+        </p>
+        <p>
+            6.components: {...}, //组件（局部注册），我们将会在下一节来讲解
+        </p>
 
-        <footer>参考：<br><a href="https://cn.vuejs.org/v2/guide/">https://cn.vuejs.org/v2/guide/</a><br><a href="http://www.cnblogs.com/keepfool/p/5619070.html">http://www.cnblogs.com/keepfool/p/5619070.html</a></footer>
-    </div>
-<script>
-    if (window.screen.width < 1024) {
-        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
-        var newMeta = document.createElement('meta');
-        newMeta.name = 'viewport';
-        newMeta.content = 'width=device-width,user-scalable=no';
-        document.getElementsByTagName('head')[0].prepend(newMeta);
-    }
-    else {
-        document.getElementsByTagName('header')[0].style.display = 'none';
-    }
-</script>
+    <footer>参考：<br><a href="https://cn.vuejs.org/v2/guide/">https://cn.vuejs.org/v2/guide/</a><br><a href="http://www.cnblogs.com/keepfool/p/5619070.html">http://www.cnblogs.com/keepfool/p/5619070.html</a></footer>
+</div>
 <script src="js/vue.js"></script>
 <script>
     new Vue({
