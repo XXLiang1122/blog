@@ -69,8 +69,6 @@ body {
 .container {
     position: absolute;
     display: none;
-    left: 280px;
-    top: 30px;
     width: 900px;
     height: 700px;
     background: #2B2B2B;

@@ -19,6 +19,12 @@ $(function() {
     })();
 
     var judge = true;
+    var bodyWidth = window.screen.availWidth,
+        bodyHeight = window.screen.availHeight;
+        offsetLeft = Math.floor((bodyWidth - 900)/2),
+        offsetTop = Math.floor((bodyHeight - 700)/3);
+
+    $('.container').css({'left': offsetLeft, 'top': offsetTop});
 
     //小方块拼凑动画
     $('.left-list ul li').click(function () {
@@ -31,8 +37,8 @@ $(function() {
         if (judge) {
             $('.boxes div').each(function(i, e) {
 
-                var newLeft = 280 + 180 * (i % 5),
-                    newTop = 30 + 140 * Math.floor(i / 5);
+                var newLeft = offsetLeft + 180 * (i % 5),
+                    newTop = offsetTop + 140 * Math.floor(i / 5);
 
                 $(e).animate({
                     left: newLeft + 'px',
@@ -46,7 +52,8 @@ $(function() {
                     if (count > 24) {
                         setTimeout(function () {
                             $('.container').show();
-                            $('.bg-img-group').hide(200);
+                            $('.bg-img-group').hide();
+                            $('.boxes').hide();
                         }, 300);
 
                     }
@@ -62,6 +69,7 @@ $(function() {
     //关闭动画
     $('.container .close').click(function () {
         $('.container').hide();
+        $('.boxes').show();
         $('.bg-img-group').show();
         $('.boxes div').removeClass('rotate-zero');
 
