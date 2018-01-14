@@ -1,5 +1,5 @@
 html, body {
-	font-size: .28rem;
+	font-size: .3rem;
 	background: #fff;
 	height: 100%;
 }
@@ -129,7 +129,7 @@ html, body {
     padding-left: .32rem;
     margin-top: -.1rem;
 	text-decoration: none;
-	font-size: .26rem;
+	font-size: .28rem;
 	color: #000;
 	line-height: .45rem;
 }
