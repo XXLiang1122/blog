@@ -1,5 +1,6 @@
 if (window.screen.width < 1024) {
 	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	var html = document.documentElement;
 	var body = document.getElementsByTagName('body')[0];
 	var dialog = document.getElementById('dialog');
 	var img = document.getElementById('img');
@@ -11,10 +12,12 @@ if (window.screen.width < 1024) {
 			dialog.style.display = 'flex';
 			img.setAttribute('src', src);
 			body.classList.add('noScroll');
+			html.classList.add('noScroll');
 		}
 	});
 	dialog.addEventListener('click', function () {
 		dialog.style.display = 'none';
 		body.classList.remove('noScroll');
+		html.classList.remove('noScroll');
 	});
 }
