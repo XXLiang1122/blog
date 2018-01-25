@@ -25,15 +25,13 @@
             document.addEventListener('DOMContentLoaded', calcFontSize, false);
         })();
     </script>
-    <link id="css" rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" media="screen and (min-device-width: 1025px)">
+    <link rel="stylesheet" href="css/style-h5.css" media="screen and (max-device-width: 1024px)">
 </head>
 <body>
 <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
 <script>
-    if (window.screen.width < 1024) {
-        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
-    }
-    else {
+    if (window.screen.width > 1024) {
         document.getElementsByTagName('header')[0].style.display = 'none';
     }
 </script>
@@ -119,7 +117,10 @@
     <p>
         与Multi-column方式不同的是，选择这种方式<b>必须设置height的高度</b>，height的值决定列数，对于动态生成的项目不友好
     </p>
-
     </div>
+<div id="dialog">
+    <img id="img" src="" alt="">
+</div>
+<script src="js/enlargeImg.js"></script>
 </body>
 </html>

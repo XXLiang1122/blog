@@ -25,15 +25,13 @@
             document.addEventListener('DOMContentLoaded', calcFontSize, false);
         })();
     </script>
-    <link id="css" rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" media="screen and (min-device-width: 1025px)">
+    <link rel="stylesheet" href="css/style-h5.css" media="screen and (max-device-width: 1024px)">
 </head>
 <body>
 <header><a href="../h5/index.html"><img id="return" src="../img/return.png"></a></header>
 <script>
-    if (window.screen.width < 1024) {
-        document.getElementById('css').setAttribute("href", 'css/style-h5.css');
-    }
-    else {
+    if (window.screen.width > 1024) {
         document.getElementsByTagName('header')[0].style.display = 'none';
     }
 </script>
@@ -103,5 +101,9 @@
         <p>const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用。</p>
         <p>const声明的常量，也与let一样不可重复声明。</p>
     </div>
+<div id="dialog">
+    <img id="img" src="" alt="">
+</div>
+<script src="js/enlargeImg.js"></script>
 </body>
 </html>
