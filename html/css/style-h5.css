@@ -73,6 +73,7 @@ h5 {
 #img {
     margin: 0 auto;
     max-width: 12rem;
+    max-height: 10rem;
 }
 
 #dialog {
