@@ -18,8 +18,11 @@ if (window.screen.width < 1024) {
 		}
 	});
 	dialog.addEventListener('click', function () {
+		scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		console.log(scrollTop);
 		dialog.style.display = 'none';
 		body.classList.remove('noScroll');
 		html.classList.remove('noScroll');
+		body.scrollTop = scrollTop;
 	});
 }
