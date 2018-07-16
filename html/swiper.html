@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>url编码</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .swiper-container,
+        .swiper-wrapper,
+        .swiper-slide {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-pagination {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+        }
+
+        .swiper-pagination span {
+            display: block;
+            width: 100%;
+            height: 30px;
+            margin-top: 10px;
+            line-height: 30px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            color: #000;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .swiper-pagination-bullet-active {
+            color: #fff !important;
+            background: #007aff !important;
+        }
+
+        .swiper-slide {
+            padding: 80px 160px;
+            font-size: 50px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .section1 {
+            padding-top: 200px;
+            padding-left: 300px;
+            font-size: 60px;
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+
+        .section1 ul {
+            line-height: 80px;
+            font-size: 34px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 30px;
+            line-height: 50px;
+            text-indent: 60px;
+        }
+
+        a {
+            font-size: 30px;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide section1" style="background: #A32D2D">
+            <header>URL编码</header>
+            <ul>
+                <li>什么是URL编码和解码？</li>
+                <li>为什么要进行URL编码？</li>
+                <li>escape()、encodeURI() 和 encodeURIComponent() 的区别</li>
+            </ul>
+        </div>
+        <div class="swiper-slide section2" style="background: #218F0E">
+            <header>URL编码</header>
+            <p>
+                一般来说，URL只能使用英文字母、阿拉伯数字和某些标点符号，不能使用其他文字和符号。这是因为网络标准RFC 1738做了硬性规定，这意味着，如果URL中有汉字，就必须编码后使用。
+            </p>
+            <a href="https://www.baidu.com/s?wd=编码">https://www.baidu.com/s?wd=编码</a>
+        </div>
+        <div class="swiper-slide" style="background: #0F4A94"></div>
+        <div class="swiper-slide" style="background: #AB6112"></div>
+        <div class="swiper-slide" style="background: #A32D2D"></div>
+        <div class="swiper-slide" style="background: #218F0E"></div>
+        <div class="swiper-slide" style="background: #0F4A94"></div>
+        <div class="swiper-slide" style="background: #AB6112"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<script src='../h5/js/swiper.min.js'></script>
+<script>
+var mySwiper = new Swiper('.swiper-container', {
+    autoplay: false,
+    direction : 'vertical',
+    pagination: {
+        el: '.swiper-pagination',
+        clickable :true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + '</span>';
+        },
+  },
+  mousewheel: {
+    releaseOnEdges: true,
+  }
+})
+</script>
+</body>
+</html>
