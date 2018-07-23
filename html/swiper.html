@@ -75,12 +75,24 @@
             margin-bottom: 20px;
             font-size: 30px;
             line-height: 50px;
+        }
+
+        .indent {
             text-indent: 60px;
         }
 
         a {
             font-size: 30px;
             color: #FFFFFF;
+        }
+
+        img {
+            max-width: 1024px;
+        }
+
+        .example {
+            font-size: 35px;
+            margin-top: 100px;
         }
     </style>
 </head>
@@ -98,17 +110,50 @@
         </div>
         <div class="swiper-slide section2" style="background: #218F0E">
             <header>URL编码</header>
-            <p>
+            <p class="indent">
                 一般来说，URL只能使用英文字母、阿拉伯数字和某些标点符号，不能使用其他文字和符号。这是因为网络标准RFC 1738做了硬性规定，这意味着，如果URL中有汉字，就必须编码后使用。
             </p>
             <a href="https://www.baidu.com/s?wd=编码">https://www.baidu.com/s?wd=编码</a>
         </div>
-        <div class="swiper-slide" style="background: #0F4A94"></div>
-        <div class="swiper-slide" style="background: #AB6112"></div>
-        <div class="swiper-slide" style="background: #A32D2D"></div>
-        <div class="swiper-slide" style="background: #218F0E"></div>
-        <div class="swiper-slide" style="background: #0F4A94"></div>
-        <div class="swiper-slide" style="background: #AB6112"></div>
+        <div class="swiper-slide" style="background: #0F4A94">
+            <p>不同的浏览器可能会有不同的编码方式，不要将编码交给浏览器</p>
+            <p>charset="UTF-8"</p>
+            <p><img src="img/乱码.png" alt=""></p>
+        </div>
+        <div class="swiper-slide" style="background: #AB6112">
+            <header>"key=value"</header>
+            <p>http://www.jingyu.com/whatever?name1=value1&name2=value2</p>
+            <p>服务器收到这种字符串的时候，会用“&”分隔出每一个参数，然后再用“=”来分隔出参数值</p>
+            <p>name1: value1 <br> name2: value2</p>
+            <p class="example">"name1=<u>va&lu=e1</u>&name2=value2"</p>
+            <p>name1: va</p>
+            <p>lu: e1</p>
+            <p>name2: value2</p>
+        </div>
+        <div class="swiper-slide" style="background: #A32D2D">
+            <header>处理方式</header>
+            <p>encodeURIComponent('va&lu=e1') <br>=> "va%26lu%3De1"</p>
+            <p>name1=va%26lu%3De1&name2=value2</p>
+            <p>服务器会把紧跟在”%”后的字节当成普通的字节，不会把它当成各个参数或键值对的分隔符</p>
+        </div>
+        <div class="swiper-slide" style="background: #218F0E">
+            <header>escape() 和 unescape()</header>
+            <img src="img/escape.jpg" alt="">
+        </div>
+        <div class="swiper-slide" style="background: #0F4A94">
+            <header>encodeURI() 和 decodeURI()</header>
+            <p>encode()</p>
+            <img src="img/encode.jpg" alt="">
+            <img src="img/encode1.jpg" alt="">
+            <p>encodeURI() 对应的解码方法为 decodeURI()</p>
+        </div>
+        <div class="swiper-slide" style="background: #AB6112">
+            <header>encodeURIComponent() 和 decodeURIComponent()</header>
+            <p>encodeURIComponent()</p>
+            <img src="img/encodeURIComponent.jpg" alt="">
+            <img src="img/encodeURIComponent1.jpg" alt="">
+            <p>encodeURIComponent() 对应的解码方法为 decodeURIComponent()</p>
+        </div>
     </div>
     <div class="swiper-pagination"></div>
 </div>
