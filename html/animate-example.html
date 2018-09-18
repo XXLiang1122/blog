@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 50px;
+        }
+
+        .container {
+            height: 340px;
+            padding: 70px;
+            font-size: 20px;
+            color: #A34F0B;
+            font-weight: bold;
+            border-top: 2px solid #7490FF;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            background: #000000;
+        }
+
+        .btn {
+            float: right;
+            width: 70px;
+            height: 40px;
+            margin-top: -120px;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+            background: #000000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .container:last-child {
+            border-bottom: 2px solid #7490FF;
+        }
+
+        .box1 {
+            transition: all 1s linear;
+        }
+
+        .box1-ani {
+            background: #FF4141;
+            transform: translateX(800px) scale(0.5) rotate3d(1, 1, 1, 360deg);
+            border-radius: 50%;
+        }
+
+        .box2-ani {
+            animation: animation 1s linear forwards;
+        }
+
+        @keyframes animation {
+            100% {
+                background: #FF4141;
+                transform: translateX(800px) scale(0.5) rotate3d(1, 1, 1, 360deg);
+                border-radius: 50%;
+            }
+        }
+
+        .getter-color {
+            visibility: hidden;
+            width: 1px;
+            height: 1px;
+            background: #000;
+            transition: background linear 1s;
+        }
+
+        .getter-color-ani {
+            background: #FF4141;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        transition
+        <div class="box box1"></div>
+        <div class="btn btn1">start</div>
+    </div>
+    <div class="container">
+        animation
+        <div class="box box2"></div>
+        <div class="btn btn2">start</div>
+    </div>
+    <div class="container">
+        jquery.js
+        <div class="box box3"></div>
+        <div class="btn btn3">start</div>
+    </div>
+    <div class="container">
+        requestAnimationFrame
+        <div class="box box4"></div>
+        <div class="btn btn4">start</div>
+    </div>
+    <div class="getter-color">
+
+    </div>
+
+<script src='../js/jquery-3.2.1.min.js'></script>
+<script>
+    // 1
+    $('.btn1').on('click', function () {
+        document.querySelector('.box1').classList.toggle('box1-ani');
+    });
+
+    //2
+    $('.btn2').on('click', function () {
+        document.querySelector('.box2').classList.toggle('box2-ani');
+    });
+
+    //3
+    $('.btn3').on('click', function () {
+        $('.box3').animate({
+            'margin-left': '800px',
+            'width': '75px',
+            'height': '75px',
+            'border-radius': '50%'
+        }, 1000);
+    });
+
+    //4
+    $('.btn4').on('click', function () {
+        var $elem = $('.getter-color');
+        $elem.addClass('getter-color-ani');
+
+        var $box = $('.box4');
+        var time = 1000;
+        var startTime = new Date().getTime();
+        var startCss = {
+            borderRadius: 0,
+            translateX: 0,
+            scale: 1,
+            rotate: 0
+        };
+        var endCss = {
+            borderRadius: 50,
+            translateX: 800,
+            scale: 0.5,
+            rotate: 360
+        };
+        var thisBorderRadius = startCss.borderRadius;
+        var thisTranslateX = startCss.translateX;
+        var thisScale = startCss.scale;
+        var thisRotate = startCss.rotate;
+        var borderRadiusSlope = (endCss.borderRadius - startCss.borderRadius) / time;
+        var translateXSlope = (endCss.translateX - startCss.translateX) / time;
+        var scaleSlope = (endCss.scale - startCss.scale) / time;
+        var rotateSlope = (endCss.rotate - startCss.rotate) / time;
+
+        window.requestAnimationFrame(function animate() {
+            var now = new Date().getTime();
+            thisBorderRadius = computeVal(borderRadiusSlope, now, startTime);
+            thisTranslateX = computeVal(translateXSlope, now, startTime);
+            thisScale = computeVal(scaleSlope, now, startTime, startCss.scale);
+            thisRotate = computeVal(rotateSlope, now, startTime);
+            thisColor = $elem.css('background');
+
+            $box.css({
+                'border-radius': thisBorderRadius + '%',
+                'transform': 'translateX(' + thisTranslateX + 'px) ' + 'scale(' + thisScale + ') ' + 'rotate3d(1, 1, 1, ' + thisRotate + 'deg)',
+                'background': thisColor
+            });
+
+            if (thisScale <= endCss.scale) {
+                return;
+            } else {
+                window.requestAnimationFrame(animate);
+            }
+        });
+    });
+
+    function computeVal(slope, now, startTime, val) {
+        return val ? slope * (now - startTime) + val : slope * (now - startTime);
+    }
+
+    // $('.box2').on('animationEnd webkitAnimationEnd', function () {
+    //     $(this).css('display', 'none');
+    // });
+</script>
+</body>
+</html>
