@@ -9,6 +9,7 @@
         }
 
         .container {
+            position: relative;
             height: 340px;
             padding: 70px;
             font-size: 20px;
@@ -26,10 +27,11 @@
         }
 
         .btn {
-            float: right;
+            position: absolute;
+            right: 0;
+            top: 140px;
             width: 70px;
             height: 40px;
-            margin-top: -120px;
             color: #fff;
             line-height: 40px;
             text-align: center;
@@ -62,6 +64,97 @@
                 transform: translateX(800px) scale(0.5) rotate3d(1, 1, 1, 360deg);
                 border-radius: 50%;
             }
+        }
+
+        .box5, .box7 {
+            position: absolute;
+            left: 70px;
+            top: 70px;
+        }
+
+        .box5-ani {
+            animation: animation5 1s linear forwards;
+        }
+
+        @keyframes animation5 {
+            50% {
+                left: 470px;
+                top: 140px;
+                width: 0;
+                height: 0;
+            }
+
+            100% {
+                left: 870px;
+                top: 70px;
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .box6-ani {
+            animation: animation6 1s linear forwards;
+        }
+
+        @keyframes animation6 {
+            50% {
+                transform: translateX(400px) scale(0);
+            }
+
+            100% {
+                transform: translateX(800px) scale(1);
+            }
+        }
+
+        .change {
+            will-change: left, top, width, height;
+        }
+
+        .box7-ani {
+            animation: animation7 1s linear forwards;
+        }
+
+        @keyframes animation7 {
+            50% {
+                left: 470px;
+                top: 140px;
+                width: 0;
+                height: 0;
+            }
+
+            100% {
+                left: 870px;
+                top: 70px;
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .box8 {
+            display: inline-block;
+            position: relative;
+            margin-right: 20px;
+            line-height: 150px;
+            color: #fff;
+            z-index: 10;
+            animation: animation8 2s linear infinite;
+        }
+
+        @keyframes animation8 {
+            100% {
+                transform: translateZ(0) rotate(360deg);
+                /*opacity: 0;*/
+            }
+/*
+            100% {
+                opacity: 1;
+            }*/
+        }
+
+        .box9 {
+            position: relative;
+            margin-bottom: 20px;
+            z-index: 100;
         }
 
         .getter-color {
@@ -102,6 +195,27 @@
 
     </div>
 
+    <div class="container">
+        left、top
+        <div class="box box5"></div>
+        <div class="btn btn5">start</div>
+    </div>
+    <div class="container">
+        transform
+        <div class="box box6"></div>
+        <div class="btn btn6">start</div>
+    </div>
+    <div class="container">
+        will-change
+        <div class="box box7"></div>
+        <div class="btn btn7">start</div>
+    </div>
+
+    <div class="container">
+        <div class="box box8">transformZ(0)</div>
+        <div class="box box9"></div>
+    </div>
+
 <script src='../js/jquery-3.2.1.min.js'></script>
 <script>
     // 1
@@ -117,7 +231,7 @@
     //3
     $('.btn3').on('click', function () {
         $('.box3').animate({
-            'margin-left': '800px',
+            'margin-left': '850px',
             'width': '75px',
             'height': '75px',
             'border-radius': '50%'
@@ -179,9 +293,20 @@
         return val ? slope * (now - startTime) + val : slope * (now - startTime);
     }
 
-    // $('.box2').on('animationEnd webkitAnimationEnd', function () {
-    //     $(this).css('display', 'none');
-    // });
+    $('.btn5').on('click', function () {
+        document.querySelector('.box5').classList.toggle('box5-ani');
+    });
+    $('.btn6').on('click', function () {
+        document.querySelector('.box6').classList.toggle('box6-ani');
+    });
+    $('.btn7').on('click', function () {
+        document.querySelector('.box7').classList.toggle('box7-ani');
+    });
+    $('.btn7').hover(function () {
+        document.querySelector('.box7').classList.add('change');
+    }, function () {
+        document.querySelector('.box7').classList.remove('change');
+    });
 </script>
 </body>
 </html>
