@@ -103,11 +103,11 @@
     $('.option1').on('click', function () {
         alert('⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄')
     })
-    $('.option2').on('click', function () {
+    $('.option2').on('touchstart', function () {
         $(this).hide()
         $('.naughty').show()
     })
-    $('.naughty').on('click', function (e) {
+    $('.naughty').on('touchstart', function (e) {
         var $this = $(this)
             height = $this.height()
             width = $this.width()
