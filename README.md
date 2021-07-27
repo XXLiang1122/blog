@@ -1,3 +1,3 @@
 # BLOG
 
-click https://xxliang1122.github.io/blog/ to view
+<a href="https://github.com/XXLiang1122/blog/issues">here</a>
